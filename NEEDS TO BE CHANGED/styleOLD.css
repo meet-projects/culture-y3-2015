@@ -1,0 +1,806 @@
+/*
+
+1. Put min and max WIDTH values on documents (in items) to create effect like in Google Drive, make it spacier with smaller sizes and more margin
+2. 
+*/
+/*#test-line{
+	position:absolute;
+	top:17px;
+	height:34px;
+	width:100%;
+	background-color:rgba(0,0,0,0.3);
+	z-index: 5;
+}*/
+
+@font-face{
+	font-family:'Purisa';
+	src: url('../fonts/Purisa.ttf');
+}
+/*
+
+COLOR SCHEME:
+
+http://paletton.com/#uid=7000u0kllw0bwOigYEzpJtst4nX
+
+ Soft Red: #f55, Soft Blue: #399, Soft Green: #4c4, Soft Orange: ffa255
+
+*/
+
+body{
+    overflow-x:hidden;
+    overflow-y:hidden;
+	-webkit-font-smoothing: antialiased;
+    /*background: url(images/hggh.jpg) no-repeat center center fixed; /*#399 url(other/background-2.jpg)*/
+    background:url('{{STATIC_URL}}app/imgs/classy_fabric.png');
+	/*background-repeat: no-repeat;*/
+
+	display:-moz-box; display:-ms-flexbox; display:box;
+	display:-webkit-box; /*"THIS IS A BOX that can change in size, so can its children"(to use flex box model)*/
+	-webkit-box-pack:center; /*when there is extra width space, center content*/ -moz-box-pack:center; -ms-box-pack:center;
+    font-family:'Purisa', 'Open Sans', 'brandon-grotesque';
+}
+
+a, span{
+    margin:0;
+    padding:0;
+    text-decoration:none;
+}
+
+html, body{
+	margin:0;
+	padding:0;
+
+	min-width:100%; /*Necessary for Flexible Box Model*/
+	min-height:100%;
+}
+
+header, section, footer, aside, nav, article, hgroup{
+	display:block;
+
+}
+
+#big_wrapper{
+	max-width:100%;
+	min-height:100%;
+	position:relative;
+	margin:0;
+	padding:0;
+	display:-webkit-box;
+	
+	-webkit-box-orient:vertical; /*align box contents vertically as if display:block*/ -moz-box-orient:vertical; -ms-box-orient:vertical;
+	-webkit-box-flex: 1; /*1 = flexible, 0 = fixed/not flexible, you can use >=1: is a RATIO*/ -moz-box-flex:1; -ms-box-flex:1;
+}
+
+a, a span{
+	text-decoration: none;
+}
+#top_menu{
+	/*background:rgba(0,0,0,0.6);*/
+	height:65px;
+	/*background:#333;*/
+	background:transparent; /*rgba(0,0,0,0.2) 0.7*/
+	width:100%;
+	margin:0;
+	padding:0;
+	/*position:fixed; /*Remove to convert to abs*/
+	/*top:0;
+	left:0;*/
+	display:-webkit-box;
+	-webkit-box-orient:horizontal; -moz-box-orient:horizontal; -ms-box-orient:horizontal;
+	-webkit-box-pack:start; -moz-box-pack:start; -ms-box-pack:start;
+	text-shadow:1px 1px 1px rgba(0,0,0,0.5);
+	/*box-shadow:0px 2px 3px 2px rgba(0,0,0,0.5);*/
+	z-index: 3;
+}
+
+#top_menu > a > span:not(#t1div), #top_menu span:not(#t1div):not(#inner_menu){
+	padding:17px;
+	color:#ddd;
+	font-size:20px;
+	-webkit-transition:background-color 0.5s, color 0.5s; 	-moz-transition:background-color 0.5s, color 0.5s; -o-transition:background-color 0.5s, color 0.5s;
+	text-align:center}
+
+#top_menu > a > span{
+    height:34px;
+    padding:0;
+    line-height: 34px;
+}
+
+/*#top menu a #logotext{
+    padding-left:0;
+    margin:0;
+}*/
+
+
+#top_menu a img:hover, #t4:hover, #tDROP:hover{
+	background-color:#999;
+	background-color:rgba(255,255,255,0.2);
+}
+
+#t2, #t3, #t4{
+	position:absolute;	/*ADD to convert to abs: position:absolute;*/
+	top:0;
+	text-align: center;
+	padding:17px;
+}
+
+#t4{
+	/*position:fixed;/*Remove to convert to abs*/
+	right:0;
+	width:96px;
+}
+
+#t3{
+	right:130px;
+	padding:18px;
+}
+
+#t2{
+	left:80px;
+}
+
+#inner_menu{
+    position:absolute;
+    top:17px;
+    left:160px;
+    height:34px;
+    width:570px;
+}
+
+#tDROP{
+	display: none;
+}
+
+img[src="{{STATIC_URL}}app/imgs/menu.png"]{
+	height:20px;
+}
+
+@media screen and (max-width: 1273px) {
+	#t1,#t2,#t3,#t4{
+		display:none;
+	}
+	#tDROP{
+		display:inline-block;
+		/*position:fixed;/*Remove to convert to abs*/	
+		top:0;
+		right:0;
+		padding:auto;
+		/*ADD to convert to abs: position:absolute;*/
+		position:absolute;
+	}
+	article div, article li{
+		font-size: 12px
+	}
+	
+	#top_menu a span:not(#tDROP){
+		padding-bottom:14px;
+	}
+	
+    #hero #heading1{
+	font-size:45px;
+    }
+	
+	#items a > div{
+        max-height:95px;
+        max-width:90px;
+	}
+	
+    #items a > div div{
+        max-width:70px;
+        max-height:20px;
+    }
+
+    #items::-webkit-scrollbar{
+      max-width: 12px;
+	}
+
+    #subjecttabs{
+    	min-width:140px !important;
+    }
+}
+
+/*@media (max-width: 300px) {
+    #hero div #heading1{
+        font-size:20px;
+    }
+}*/
+
+
+/*----------------------------------------------------------------------------------------------------------------*/
+#biggesthero{
+	height:100%;
+	background: url('../imgs/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#bighero{
+    background:#333;
+	background:rgba(51,51,51,0.825);/*-image:url("backgroundblur.jpg");*/
+	box-shadow:inset 0 1px 1px 0 rgba(0,0,0,0.2);
+
+	/*2 lines: Make background STRETCH to fit div, maintains aspect ratio make sure to have set height*/
+	background-size: cover;
+	background-repeat:no-repeat;
+
+    height:94vh;
+    width:100%;
+    display: -webkit-box;
+    display: -moz-box;
+    /*4 Warnings: OKAY*/
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    /*align-items: center;*/ /*Vertical Align*/
+}
+
+#hero{
+	/*PRE_FLEXBOX_CENTERING:
+	position:relative;
+	top:50%;
+	transform: translateY(-50%);*/
+    white-space:nowrap;
+	height:100%;
+	overflow:hidden;
+	width:100%;
+
+}
+
+#hero > div{
+	display:inline-block;
+	width:50%;
+}
+
+#hero .button-login{
+	height:52px;
+	margin-top:18px;
+	margin-bottom:18px;
+}
+
+#hero input{
+	text-align:center;
+}
+
+.button-login::-webkit-input-placeholder {
+	text-align: center;
+	color:#666;
+}
+
+
+#hero, #gfb, #hero .button-login, #hero #SignInUp, #heading1div{
+	/*NEW -NO-FLEXBOX- MAGIC CENTERING */
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	max-width:99.9%;
+	text-align: center;
+}
+
+#hero .button{
+	display:inline-block;
+	margin:auto;
+	max-height:99.9%;
+	text-align: center;	
+}
+
+#heading1div{
+    height:auto;
+    width:100%;
+    margin-bottom:18px;
+}
+
+#heading1{
+	color:#399;
+	font-size:45px;
+	line-height:100px;
+	height:100px;
+	display:block;
+	text-overflow:hidden;
+    font-family:'Open Sans';
+    position:relative;
+    top:0;
+    left:0;
+    margin-left:0;
+    padding-left:0;
+}
+
+#heading1div #headinglogo{
+    min-width:100px;
+    min-height:100px;
+    display:inline-block;
+    position:relative;
+    top:10px; /*24px to level with logo*/
+    left:0;
+    margin-right:0;
+    padding-right:0;
+    border-radius:10px;
+    box-shadow:0px 0px 5px 0 rgba(34,34,34,0.8);
+}
+
+#hero div #SignInUp span, #hero div #SignInUp a{
+    font-family:'Open Sans';
+    font-size:18px;
+}
+
+#hero div #SignInUp a{
+    color:#ddd;
+}
+
+#hero div #SignInUp span{
+    color:#399;
+}
+
+#hero div #SignInUp{
+    margin-top:18px;
+    margin-bottom:0;
+}
+
+
+#hero div, #hero form{
+    padding:0;
+}
+
+#hero form{
+	margin-top:18px;
+}
+
+#hero > div{
+	/* /MAGIC CENTERING: /* /         , + max-height/width:50% on child depending on vertical or horizontal *OR JUST HEIGHT/WIDTH, no "max"**/
+	position: relative;
+	/*3 Warnings: OKAY*/
+	top:50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+  	/*align-items: center;
+  	justify-content: center;*/
+}
+
+#hero .button{
+    margin-top:18px;
+    margin-bottom:18px;
+}
+/*form > #or{
+    margin-top:5px;
+    font-size:14px;
+    text-decoration:underline;
+    color:#ddd;
+}
+    */
+
+/*-------------------------------------------------------------------------------------------------*/
+.button{
+	border:2px solid #ddd;
+	background:transparent;
+	font-size:18px;
+	text-shadow:none;
+	width:171px;
+	height:54px; /*58px with border (54+2x2)*/
+	line-height: 58px; /*TO Vertically Align Textin a div: set line-height = to height of div*/
+	margin:0;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+    position: relative;
+
+	/*display:box;
+	display:flex-box;
+  	display: flex;  	align-items: center;
+  	justify-content: center;*/
+	-webkit-transition:background-color 0.1s; 	-moz-transition:background-color 0.1s; 	-o-transition:background-color 0.1s;
+	color:#ddd;
+}
+
+.button:hover{
+	background:#ccc;
+	background:rgba(255,255,255,0.2);
+}
+
+
+#g{
+    background-color:#DD4B39;
+    border:#DD4B39;
+}
+
+#fb{
+    background-color:#3b5998;
+    border:#3b5998;
+}
+
+#g:hover{
+	background:#C43220;
+	background:rgba(196,50,32,0.75);
+}
+
+#fb:hover{
+	background:#22407F;
+	background:rgba(34,64,127,0.75);
+}
+
+.button-login{
+	border:0px solid #555; /*#e13130*/
+	-webkit-border-radius:25px;
+	border-radius:25px;
+	background-color:rgba(34,34,34,0.9);
+	/*box-shadow:1px 1px 2px 2px rgba(0,0,0,0.2);*/
+	font-size:20px;
+	text-shadow:none;
+	width:289px; /*was 171px*/
+	height:54px;
+
+	color:#ddd;
+	text-align:center;
+	position: relative;
+
+	/*display:box;
+	display:flex-box;    	display: flex;  	align-items: center;
+  	justify-content: center;*/
+	-webkit-transition:background-color 0.1s, border-color 0.1s; -moz-transition:background-color 0.1s, border-color 0.1s; -o-transition:background-color 0.1s, border-color 0.1s;
+
+    outline:none;
+}
+
+.button-login:hover{
+	background:rgba(34,34,34,0.9);
+}
+
+/*----------------------------------------------------------------------------------------------------*/
+#t1div{
+	max-height:68px;
+	max-width:100%;
+/*	padding-left:17px;
+	padding-right:17px;*/
+	margin:0;
+	position:relative;
+}
+
+#t1{
+	-webkit-border-radius:25px;
+	border-radius:14px;
+	background-color:#222;
+	background-color:rgba(34,34,34,0.9);
+	/*box-shadow:1px 1px 2px 2px rgba(0,0,0,0.2);*/
+	font-size:16px;
+	text-shadow:none;
+	height:34px;
+	color:#399;
+	text-align:left;
+	position:relative;
+	border:none;
+	margin:0;
+	padding:0;
+    outline:none;
+    color:#ddd;
+	width:100%;
+	text-indent:20px;
+	-webkit-transition:background-color 0.3s, border-color 0.3s; 	-moz-transition:background-color 0.3s, border-color 0.3s; 	-o-transition:background-color 0.3s, border-color 0.3s;
+}
+
+#t1::-webkit-outer-spin-button, /* Removes arrows */
+#t1::-webkit-inner-spin-button, /* Removes arrows */
+#t1::-webkit-search-cancel-button { /* Removes blue cross */
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/*if you have 2 columns, make ONE flexible and the other fixed*/
+
+#main_section2{
+	display:-webkit-box;
+	-webkit-box-flex: 1;
+	margin:0;
+	padding:0;
+	align-items: center;
+    justify-content: center;
+	-webkit-flex-direction:row;
+	-webkit-box-pack:center;
+	width:100%;
+	
+}
+
+/*#the_footer{
+    width:100%;
+    position:absolute;
+    bottom:0;
+    margin:0;
+
+	display:inline-block;
+	text-align:center;
+	background-color:rgba(51,51,51,0.825);
+	display:none;
+}
+
+#the_footer p{
+	color:#399;
+	font-weight:bold;
+}*/
+
+article{
+    max-height:700px;
+    max-width:90%;
+	margin:25px auto;
+	-webkit-box-flex: 1;
+	width:90%;
+	-webkit-border-radius:14px;
+	border-radius: 14px;
+/*	text-align:center;*/	
+	position: relative;
+  	
+  	display: flex;
+  	/*align-items: center;
+  	justify-content: center;*/
+  	
+  	background:#222;
+  	
+}
+
+#bar{
+    width:100%;
+    height:40px;
+    background:#333;
+}
+
+#items{
+  	-webkit-flex-wrap:wrap;
+  	max-height:660px;
+  	margin:20px;
+  	overflow-y:auto;
+  	overflow-x:hidden;
+}
+
+#items::-webkit-scrollbar{
+      width: 15px;
+} /* this targets the default scrollbar (compulsory) */
+
+::-webkit-scrollbar{
+    width:auto;
+}
+
+#items::-webkit-scrollbar-track{
+      background-color:#399;
+      -webkit-border-radius:25px;
+      border-radius:25px;
+
+} /* the track is the base */
+
+::-webkit-scrollbar-track{
+    background-color:rgba(0,0,0,0.72);
+}
+
+#items::-webkit-scrollbar-thumb{
+    background-color:004039;
+    width:90%;
+    border:2px solid #399;
+    -webkit-border-radius:25px;
+    border-radius:25px;
+} /* the thumb is the slider */
+
+::-webkit-scrollbar-thumb{
+    background-color:#004040;
+    width:90%;
+    border:3px solid #399;
+	-webkit-border-radius:25px;
+    border-radius:25px;
+    
+}
+
+#items::-webkit-scrollbar-button, ::-webkit-scrollbar-button {
+    display:none;
+} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+ 
+#items::-webkit-scrollbar-corner, ::-webkit-scrollbar-corner {
+      background-color: #222;
+      
+} /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+
+
+#items a > div{ /*Div of DOC/Folder*/
+    height:190px;
+    width:180px;
+    margin:0 0 10px 0;
+    background:#333;
+    display:inline-block;
+
+}
+
+#items a > div:hover{
+    background:#444;
+}
+
+#items a > div div{ /*Name of Doc/Folder*/
+    color:#ddd;
+    width:160px;
+    height:25px;
+    margin:0;
+    padding:0 10px 0 10px;
+    text-align:center;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+#items a > div img{
+    height:70%;
+    padding:0;
+    margin-top: 10%;
+    
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img[src="images/logo-monkeymetal.png"]{
+	border:0px solid white;
+    -webkit-border-radius:15%;
+    border-radius:15%;
+}
+
+#logo{
+	display:inline-block;
+	padding:17px;
+}
+
+#profile{
+    background:#399;
+}
+
+#subjecttabs{
+    height:700px;
+    min-width:200px;
+    list-style-type:none;
+    padding:0;
+    margin:0;
+    box-shadow:5px 0px 5px 0 rgba(34,34,34,0.8);
+    background:#399;
+	border-top-left-radius: 7px;
+	border-bottom-left-radius:7px;
+	
+}
+
+#subjecttabs a{
+    padding:0;
+    margin:0;
+}
+
+#subjecttabs a li, #add a div{
+    text-decoration:none;
+    color:#ddd;
+    text-shadow:1px 1px 1px rgba(0,0,0,0.5);
+;
+    text-align:left;
+}
+#subjecttabs a li{
+    padding:20px;
+    margin:0;
+}
+
+
+
+#add a div{
+	-webkit-border-radius:7px;
+    border-radius:7px;
+    text-align:center;
+    padding:5px 0 5px 0;
+    background:#333;
+    margin:20px;
+}
+
+#add div:hover{
+    box-shadow:2px 2px 3px 1px rgba(0,0,0,0.5);
+}
+
+#subjecttabs a li:not(.active):not(#home):hover{
+    background:#218787;
+}
+
+.active{
+    background:#0F7575;
+	box-shadow:
+	inset 0 3px 0 0 rgba(15,117,117,0.7),
+    inset 0 -3px 0 0 rgba(15,117,117,0.7);
+}
+
+#subjecttabs #home{
+    box-shadow:
+	inset 0 3px 0 0 rgba(5,117,117,0),
+    inset 0 -3px 0 0 rgba(5,117,117,0);
+    background:repeating-linear-gradient(45deg, rgba(51,51,51,0.5), rgba(51,51,51,0.5) 35px, #0F7575 35px, #0F7575 70px);
+    border-top:3px solid #399;
+    border-bottom:3px solid #399;
+}
+
+/*#subjecttabs #home:hover{
+	background:repeating-linear-gradient(45deg, rgba(51,51,51,0.9), rgba(51,51,51,0.9) 35px, #0F7575 35px, #0F7575 70px);
+
+}*/
+
+#subjecttabs #homeA .active{
+	background:repeating-linear-gradient(45deg, rgba(51,51,51,0.9), rgba(51,51,51,0.9) 35px, #0F7575 35px, #0F7575 70px);
+    border-top:3px solid #333;
+    border-bottom:3px solid #333;
+}
+
+/* texshadow, box-radius, box-shadow*/
+/*Gradient: color/background:
+-webkit-linear-gradient(center,circle,gray 0%, white 50%)
+-webkit-radial-gradient(top,#000,#fff)
+
+*/
+
+/*#skin{
+	display:-webkit-box;
+	-webkit-box-orient:horizontal;
+	width:100%;
+	-webkit-box-pack:center;
+	display:none;
+} */
+
+#calendar{
+	width: 100%;
+	margin-bottom:50px;
+}
+
+#calendar table, #calendar table *{
+/*	border-spacing:0;
+*/	border-color:#ddd;
+}
+
+#calendar table{
+	width:90%;
+	position:relative;
+	transform:translateX(+5%);
+	border-collapse: collapse;
+}
+
+#calendar th{
+	color:#ddd;
+}
+
+#calendarName{
+	width: 100%;
+	color:#ddd;
+/*	-webkit-text-stroke:1px #963030;
+*/	font-family:'Open Sans';
+	font-size:62px;
+	text-align: center;
+	text-shadow:1px 1px 1px rgba(0,0,0,0.5);
+	margin-bottom:5px;
+;
+
+/*	position:relative;
+	transform:translateX(+50%);*/
+}
+
+#calendar tr:not(#days){
+	border-bottom:2px solid #ddd;
+	border-color:#ddd;
+}
+
+#calendar td{
+	height:120px;
+	width:14%;
+	color:#ddd;
+	font-size:40px;
+	text-align: center;
+	line-height:120px;
+}
+
+#calendar td:not(.today):not(.faded):hover{
+	background-color:rgba(255,255,255,0.2);
+}
+
+#calendar #days th{
+	background:#963030;
+	height:30px;
+	width:14%;
+	margin:0;
+	box-shadow:5px 3px 5px 0 rgba(34,34,34,0.8);
+}
+
+#calendar .faded{
+    color:#999;
+    font-size:30px;
+}
+
+#calendar .today{
+	background:#963030;
+}

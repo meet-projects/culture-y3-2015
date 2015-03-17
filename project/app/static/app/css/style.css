@@ -14,7 +14,7 @@
 
 @font-face{
 	font-family:'Purisa';
-	src: url('fonts/Purisa.ttf');
+	src: url('../fonts/Purisa.ttf');
 }
 /*
 
@@ -27,11 +27,10 @@ http://paletton.com/#uid=7000u0kllw0bwOigYEzpJtst4nX
 */
 
 body{
-    overflow-x:hidden;
     overflow-y:hidden;
 	-webkit-font-smoothing: antialiased;
     /*background: url(images/hggh.jpg) no-repeat center center fixed; /*#399 url(other/background-2.jpg)*/
-    background:url('images/classy_fabric.png');
+    background:url('../imgs/classy_fabric.png');
 	/*background-repeat: no-repeat;*/
 
 	display:-moz-box; display:-ms-flexbox; display:box;
@@ -151,7 +150,7 @@ a, a span{
 	display: none;
 }
 
-img[src="images/menu.png"]{
+img[src="{{STATIC_URL}}app/imgs/menu.png"]{
 	height:20px;
 }
 
@@ -209,7 +208,7 @@ img[src="images/menu.png"]{
 /*----------------------------------------------------------------------------------------------------------------*/
 #biggesthero{
 	height:100%;
-	background: url(images/background.jpg) no-repeat center center fixed;
+	background: url('../imgs/background.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -803,4 +802,15 @@ img[src="images/logo-monkeymetal.png"]{
 
 #calendar .today{
 	background:#963030;
+}
+
+#dropdownMenu{
+	background-color:#333;
+	position:absolute;
+	top:65px;
+	right:0;
+	width:250px;
+	height:200px;
+	display:none;
+
 }

@@ -12,7 +12,7 @@
 		{% endblock %}
 	</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans|Pacifico' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href='{{STATIC_URL}}app/css/style.css'>
+	<link rel="stylesheet" type="text/css" href='{{STATIC_URL}}app/css/superstyle.css'>
 	<!--<script src="javascript.js"></script>-->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="{{STATIC_URL}}app/js/jquery.js"></script>
@@ -20,25 +20,38 @@
 </head>
 
 <body>
+	<!--
 <div id="big_wrapper">
 	<nav id="top_menu">
-			<a href="landingPage.html"><img id="logo" src="{{STATIC_URL}}app/imgs/notecloudlogo.png" height="34px"> <!--<div id="logotext" >otebook</div>--></a>
-<!-- 			<span id="inner_menu">
-			    <span id="t1div"><input id="t1" type="search" name="Search" placeholder="Search" onfocus="this.placeholder=''" onblur="this.placeholder='Search'"></span>
-			    <a href="indexCalendar.php"><span id="t2">Calendar</span></a>
-			    <a href="javascript:;"><span id="t3">Settings</span></a>
-			</span> -->
+			<a href="landingPage.html"><img id="logo" src="{{STATIC_URL}}app/imgs/notecloudlogo.png" height="34px"> <div id="logotext" >otebook</div></a>
+
             	<a><span id="t4">Sign in</span></a>
                 <a><span id="tDROP"><img src="{{STATIC_URL}}app/imgs/menu.png"></span></a>
-<!--                 <button id="yoni" onclick='toggleDropDown();'>hello</button>
- -->	</nav>
+               <button id="yoni" onclick='toggleDropDown();'>hello</button>
+ 	</nav>
 	<div id = "dropdownMenu">
-
+-->
 	</div>
-{% block rami %}
-{% endblock %}
+
 </div>
 
+			<nav id="nav_bg">
+				<ul class="navbar">
+					<li>
+						<a href="base.html"><img src="{{STATIC_URL}}app/imgs/logo.png" height="50px" width="50px"></a>
+					</li>
+					<li id="sign_in">
+						<div id="sign_in_box">sign in</div>
+					</li>	
+
+
+				</ul>
+
+
+
+			</nav>
+
+{% block rami %}
+{% endblock %}
 </body>
 </html>
-</body>

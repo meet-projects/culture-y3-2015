@@ -39,6 +39,10 @@ body{
     font-family:'Purisa', 'Open Sans', 'brandon-grotesque';
 }
 
+.navbar {
+	list-style-type: none;
+}
+
 a, span{
     margin:0;
     padding:0;

@@ -12,7 +12,7 @@
 		{% endblock %}
 	</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans|Pacifico' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href='{{STATIC_URL}}app/css/superstyle.css'>
+	<link rel="stylesheet" type="text/css" href='{{STATIC_URL}}app/css/homebase.css'>
 	<!--<script src="javascript.js"></script>-->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="{{STATIC_URL}}app/js/jquery.js"></script>
@@ -38,11 +38,11 @@
 			<nav id="nav_bg">
 				<ul class="navbar">
 					<li>
-						<a href="base.html"><img src="{{STATIC_URL}}app/imgs/logo.png" height="50px" width="50px"></a>
+						<a href="{% url 'home' %}"><img src="{{STATIC_URL}}app/imgs/logo.png" height="50px" width="50px"></a>
 					</li>
 					<li id="sign_in">
-						<div id="sign_in_box">sign in</div>
-					</li>	
+						<div id="sign_in_box">Sign in</div>
+					</li>
 
 
 				</ul>
@@ -51,7 +51,7 @@
 
 			</nav>
 
-{% block rami %}
+{% block body %}
 {% endblock %}
 </body>
 </html>

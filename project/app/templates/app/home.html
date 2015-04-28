@@ -2,7 +2,7 @@
 
 {%block title %} Home page {% endblock %}
 
-{% block rami %}
+{% block body %}
 	<div id="biggesthero">
 		<div id="bighero">
 			<div id="hero">
@@ -11,7 +11,7 @@
     			    	<div id="heading1div">
     				    	<img class="flags" src="{{STATIC_URL}}app/imgs/palestine.png" height="200px" width="338px">
 				    	<div>
-				    		<a href="javascript:;">
+				    		<a href="{% url 'palestine' %}">
 				    			<div class="button">Explore</div>
 				    		</a>
 				    	</div>
@@ -24,7 +24,7 @@
     			    	<div id="heading1div">
     				    	<img class="flags" src="{{STATIC_URL}}app/imgs/israel.jpg" height="200px" width="338px">
 				    	<div>
-				    		<a href="javascript:;">
+				    		<a href="{% url 'israel' %}">
 				    			<div class="button">Explore</div>
 				    		</a>
 				    	</div>
